@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Student Mark Predictor ML App</title>
+
+    <style>
+      h1 {color: blue;} 
+    
+      body {
+        font-family: Arial, sans-serif;
+        background-color: hsl(170, 71%, 48%);
+        margin: 0;
+        padding: 0;
+      }
+      .login {
+        width: 50%;
+        margin: 50px auto;
+        background-image: url('static/imagegs/study.jpg');
+        background-repeat: no-repeat; 
+        background-size: cover; 
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .button_css {
+        color: #16bd56 !important;
+        text-transform: uppercase;
+        text-decoration: none;
+        background: #ffffff;
+        padding: 20px;
+        border: 4px solid #16bd56 !important;
+        display: inline-block;
+        transition: all 0.4s ease 0s;
+      }
+      .button_css:hover {
+        color: #ffffff !important;
+        background: #f6b93b;
+        border-color: #f6b93b !important;
+        transition: all 0.4s ease 0s;
+      }
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #0e0d0d;
+      }
+      input::placeholder {
+        color: red;
+      }
+    </style>
+    
+  </head>
+
+  <body>
+    <div>
+      <img src="static/imagegs/mgmcet.png" class="w3-border w3-padding"
+        alt="MGMCET" style="width:100%">
+    </div>
+
+    <div class="login">
+      <center>
+        <form action="{{ url_for('predict')}}" method="post">
+
+          <label for="full_name">Full Name:</label>
+          <input type="text" name="full_name" placeholder="Full Name"
+            required="required"><br><br>
+
+          <label for="email">Email:</label>
+          <input type="email" name="email" placeholder="Email"
+            required="required"><br><br>
+
+          <label for="roll_number">Roll Number:</label>
+          <input type="text" name="roll_number" placeholder="Roll Number"
+            required="required"><br><br>
+
+          <label for="class">Class:</label>
+          <input type="text" name="class" placeholder="Class"
+            required="required"><br><br>
+
+          <label for="section">Enter your marks for reference:</label>
+          <input type="number" name="marks_percentage"
+            placeholder="Marks Percentage" required="required"><br><br>
+
+          <h1>*** Enter Your Study Hours to Predict Marks ***</h1>
+
+          <input align="center" type="number" name="study_hours"
+            placeholder="study hours" required="required" width="48"
+            height="10" />
+          <br>
+
+          <div class="button_cont" align="center"><a class="button_css"
+              target="_blank" rel="nofollow noopener">
+              <button type="submit"
+                class="btn btn-primary btn-block btn-large"><strong>Predict
+                  Marks</strong></button></a>
+          </div>
+        </form>
+      </center>
+
+      <div>
+        <center>
+          <h2 style="color: {{ Text_color }}">{{ prediction_text }}</h2>
+        </center>
+      </div>
+    </div>
+  </body>
+</html>
